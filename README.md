@@ -96,7 +96,7 @@ If you use this repository or parts of it in your work, please cite the **XRAISE
 
 ## 📄 Acknowledgment
 
-This work is part of the **XRAISE** research project conducted by the  
+This work is part of the **XRAISE** research project by the  
 **Deutsches Zentrum für Schienenverkehrsforschung (DZSF)** at the **Eisenbahn-Bundesamt**.
 
 ---
