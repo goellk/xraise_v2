@@ -17,10 +17,10 @@ This repository provides:
   - **ResNet50**
   - **ConvNeXt-T**
 - Implementations of four XAI methods:
-  - **Grad-CAM**
+  - **Grad-CAM (Gradient-weighted Class Activation Mapping)**
   - **LRP (Layer-wise Relevance Propagation)**
-  - **CRAFT**
-  - **CRP (Contextual Relevance Propagation)**
+  - **CRAFT (Concept Recursive Activation FacTorization)**
+  - **CRP (Concept Relevance Propagation)**
 - A `requirements.txt` file for setting up the Python environment.
 
 ---
