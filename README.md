@@ -89,7 +89,7 @@ pip install -r requirements.txt
 ### Currently working XAI/model-combinations:
 | Model       | Grad-CAM | LRP    | CRAFT | CRP |
 |--------------|-------- |--------|-----------|-----|
-| VGG16        |   ✅   |        | ✅        |     |
+| VGG16        |   ✅   |   ✅     | ✅      |  ✅   |
 | ResNet50     |   ✅   |  ❌  | ✅        |     |
 | ConvNeXt-T   |   ✅   |        | ✅        |     |
 
