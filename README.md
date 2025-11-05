@@ -2,10 +2,9 @@
 
 ![Python Version](https://img.shields.io/badge/python-3.11-blue.svg)
 ![Project Status](https://img.shields.io/badge/status-active-brightgreen.svg)
-![License](https://img.shields.io/badge/license-TBD-lightgrey.svg)
 
 **XRAISE** (Explainable AI for Railway Safety Evaluations) is a research project by the **Deutsches Zentrum für Schienenverkehrsforschung (DZSF)** at the **Eisenbahn-Bundesamt**.  
-This repository contains the source code for training convolutional neural networks and applying various explainable AI (XAI) methods to support safety evaluations in the railway domain.
+This repository contains the source code for training convolutional neural networks on a custom dataset and applying various explainable AI (XAI) methods to support safety evaluations in the railway domain.
 
 ---
 
