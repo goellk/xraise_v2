@@ -90,8 +90,8 @@ pip install -r requirements.txt
 | Model       | Grad-CAM | LRP    | CRAFT | CRP |
 |--------------|-------- |--------|-----------|-----|
 | VGG16        |   ✅   |   ✅     | ✅      |  ✅   |
-| ResNet50     |   ✅   |  ❌  | ✅        |     |
-| ConvNeXt-T   |   ✅   |        | ✅        |     |
+| ResNet50     |   ✅   |  ❌  | ✅        |  ✅    |
+| ConvNeXt-T   |   ✅   |   ❌  | ✅        |   ❌  |
 
 ---
 
