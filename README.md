@@ -85,7 +85,9 @@ pip install -r requirements.txt
 ## 🚀 Usage Instructions
 
 *(To be completed — usage examples and run commands will be added later.)*
-| Model       | Grad-CAM ✅ | LRP    | CRAFT ✅ | CRP |
+
+### Currently working XAI/model-combinations:
+| Model       | Grad-CAM | LRP    | CRAFT | CRP |
 |--------------|-------------|--------|-----------|-----|
 | VGG16        | ✅          |        | ✅        |     |
 | ResNet50     | ✅          | ❌     | ✅        |     |
