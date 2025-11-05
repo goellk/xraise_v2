@@ -41,7 +41,7 @@ XRAISE/
 │   │   ├── helper.py
 │   │   └── [XAI method scripts]
 │   │
-│   ├── ConvNeXt/
+│   ├── ConvNeXt-T/
 │       ├── training.py
 │       ├── helper.py
 │       └── [XAI method scripts]
