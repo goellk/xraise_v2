@@ -13,14 +13,14 @@ This repository contains the source code for training convolutional neural netwo
 This repository provides:
 
 - Training code for three convolutional neural network architectures:
-  - **VGG16**
-  - **ResNet50**
-  - **ConvNeXt-T**
+  - **VGG16** [Simonyan & Zisserman, 2015]
+  - **ResNet50** [He et al., 2016]
+  - **ConvNeXt-T** [Liu et al., 2022]
 - Implementations of four XAI methods:
-  - **Grad-CAM (Gradient-weighted Class Activation Mapping)**
-  - **LRP (Layer-wise Relevance Propagation)**
-  - **CRAFT (Concept Recursive Activation FacTorization)**
-  - **CRP (Concept Relevance Propagation)**
+  - **Grad-CAM (Gradient-weighted Class Activation Mapping)** [Selvaraju et al., 2017]
+  - **LRP (Layer-wise Relevance Propagation)** [Bach et al., 2015]
+  - **CRAFT (Concept Recursive Activation FacTorization)** [Fel et al., 2015]
+  - **CRP (Concept Relevance Propagation)** [Achtibat et al., 2015]
 - A `requirements.txt` file for setting up the Python environment.
 
 ---
