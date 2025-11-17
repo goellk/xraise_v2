@@ -97,7 +97,7 @@ pip install -r requirements.txt
 
 ## 🧠 Citation
 
-If you use this repository or parts of it in your work, please cite the **XRAISE** project appropriately.
+If you use this repository or parts of it in your work, please cite this github repository appropriately.
 
 ---
 
