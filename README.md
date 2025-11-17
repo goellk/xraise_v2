@@ -101,8 +101,24 @@ If you use this repository or parts of it in your work, please cite the **XRAISE
 
 ---
 
-## 📄 Acknowledgment
+## 📚 References
 
+### Model Architectures
+
+- VGG16: Simonyan, K. & Zisserman, A. (2015). Very Deep Convolutional Networks for Large-Scale Image Recognition.
+- ResNet: He, K., Zhang, X., Ren, S., & Sun, J. (2016). Deep Residual Learning for Image Recognition.
+- ConvNeXt: Liu, Z., Mao, H., Wu, C.-Y., Feichtenhofer, C., Darrell, T., & Xie, S. (2022). A ConvNet for the 2020s.
+
+### XAI Methods
+
+- Grad-CAM: Selvaraju, Ramprasaath R., et al. “Grad-CAM: Visual Explanations from Deep Networks via Gradient-Based Localization.” 2017 IEEE International Conference on Computer Vision (ICCV), 2017, pp. 618–626.
+- LRP: Bach, Sebastian, Alexander Binder, Grégoire Montavon, Frederick Klauschen, Klaus-Robert Müller, and Wojciech Samek. “On Pixel-Wise Explanations for Non-Linear Classifier Decisions by Layer-Wise Relevance Propagation.” PLoS ONE, vol. 10, no. 7, 2015, e0130140.
+- CRAFT: Thomas, Fel, Agustin Picard, Louis Bethune, Thibaut Boissin, David Vigouroux, Julien Colin, Rémi Cadène, and Thomas Serre. “CRAFT: Concept Recursive Activation Factori­zation for Explainability.” Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 2023.
+- CRP: Achtibat, Reduan, Maximilian Dreyer, Ilona Eisenbraun, Sebastian Bosse, Thomas Wiegand, Wojciech Samek, and Sebastian Lapuschkin. “From Attribution Maps to Human‐Understandable Explanations through Concept Relevance Propagation.” Nature Machine Intelligence, vol. 5, no. 9, 2023, pp. 1006–1019.
+
+---
+
+## 📄 Acknowledgment
 This work is part of the **XRAISE** research project by the  
 **Deutsches Zentrum für Schienenverkehrsforschung (DZSF)** at the **Eisenbahn-Bundesamt**.
 
