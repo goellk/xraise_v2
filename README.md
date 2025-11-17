@@ -23,6 +23,8 @@ This repository provides:
   - **CRP (Concept Relevance Propagation)** [Achtibat et al., 2015]
 - A `requirements.txt` file for setting up the Python environment.
 
+Please note that you have to add datasets to the "Data" directory by yourself.
+
 ---
 
 ## 📁 Repository Structure
@@ -47,7 +49,7 @@ XRAISE/
 │       └── [XAI method scripts]
 │
 ├── Data/
-│   └── [datasets and preprocessing files]
+│   └── [datasets]
 │
 └── requirements.txt
 ```
