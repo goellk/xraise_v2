@@ -118,7 +118,29 @@ pip install -r requirements.txt
 }
 ```
 3. Then you need to train a model (VGG16/ResNet50/ConvNeXt-t).
-4. Finally you can run an XAI method (Grad-CAM/LRP/CRAFT/CRP) on a trained model.
+```python
+# TRAINING SCRIPT FOR CONVNEXT-T MODEL
+
+#################################################################################################
+# SETUP START - Change parameters if necessary
+#################################################################################################
+
+# Relative paths to training and test splits (images and annotation files)
+TRAINING_IMG_DIR = "/Data/CUSTOM_DATASET_v3_unified/training/imgs"
+TRAINING_ANNOT_DIR = "/Data/CUSTOM_DATASET_v3_unified/training/annots"
+TEST_IMG_DIR = "/Data/CUSTOM_DATASET_v3_unified/test/imgs"
+TEST_ANNOT_DIR = "/Data/CUSTOM_DATASET_v3_unified/test/annots"
+
+# Hyperparameters
+BATCH_SIZE = 4
+LEARNING_RATE = 0.0001
+EPOCHS = 50
+
+#################################################################################################
+# SETUP END
+#################################################################################################
+```
+5. Finally you can run an XAI method (Grad-CAM/LRP/CRAFT/CRP) on a trained model.
 ```bash
 python lrp.py
 ```
