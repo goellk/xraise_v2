@@ -1,3 +1,34 @@
+# TRAINING SCRIPT FOR CONVNEXT-T MODEL
+
+#################################################################################################
+# SETUP START
+#################################################################################################
+
+# Relative paths to training and test splits (images and annotation files)
+TRAINING_IMG_DIR = "/Data/CUSTOM_DATASET_v3_unified/training/imgs"
+TRAINING_ANNOT_DIR = "/Data/CUSTOM_DATASET_v3_unified/training/annots"
+TEST_IMG_DIR = "/Data/CUSTOM_DATASET_v3_unified/test/imgs"
+TEST_ANNOT_DIR = "/Data/CUSTOM_DATASET_v3_unified/test/annots"
+
+# Hyperparameters
+BATCH_SIZE = 4
+LEARNING_RATE = 0.0001
+EPOCHS = 50
+
+#################################################################################################
+# SETUP END
+#################################################################################################
+
+
+
+
+
+
+
+#################################################################################################
+# DO NOT CHANGE CODE BELOW
+#################################################################################################
+
 import csv
 import torch
 import torch.optim as optim
@@ -8,6 +39,7 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_sc
 from helper import *
 import random
 import numpy as np
+
 
 # Reproducability
 #os.environ['CUBLAS_WORKSPACE_CONFIG'] = ':4096:8' # Set environment variable to enable deterministic algorithms
@@ -32,16 +64,10 @@ transform = transforms.Compose([
 
 # Paths to dataset directories
 workspace_dir = str(os.path.dirname(os.path.dirname(os.getcwd())))
-train_img_dir = workspace_dir + "/Data/CUSTOM_DATASET_v3_unified/training/imgs"
-train_annot_dir = workspace_dir + "/Data/CUSTOM_DATASET_v3_unified/training/annots"
-
-val_img_dir = workspace_dir + "/Data/CUSTOM_DATASET_v3_unified/test/imgs"
-val_annot_dir = workspace_dir + "/Data/CUSTOM_DATASET_v3_unified/test/annots"
-
-# Define hyperparameters
-BATCH_SIZE = 4 #4
-LEARNING_RATE = 0.0001
-EPOCHS = 50
+train_img_dir = workspace_dir + TRAINING_IMG_DIR
+train_annot_dir = workspace_dir + TRAINING_ANNOT_DIR
+val_img_dir = workspace_dir + TEST_IMG_DIR
+val_annot_dir = workspace_dir + TEST_ANNOT_DIR
 
 # Data preparation
 print("Preparing data...")
