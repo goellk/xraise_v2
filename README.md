@@ -72,7 +72,7 @@ venv\Scripts\activate
 **macOS / Linux**
 
 ```bash
-python3 -m venv venv
+python3.11 -m venv venv
 source venv/bin/activate
 ```
 
@@ -86,9 +86,12 @@ pip install -r requirements.txt
 
 ## 🚀 Usage Instructions
 
-1. First of all, you need to place the dataset into the dataset folder.
-2. Then you need to train a model (VGG16/ResNet50/ConvNeXt-t).
-3. Finally you can run an XAI method (Grad-CAM/LRP/CRAFT/CRP) on a trained model.
+1. First of all, you need to place the dataset into the dataset folder. The dataset folder should consist of two directories, "test" and "training". In these directories, there should be two subdirectories "imgs" and "annots". The images should be placed in the "imgs" directory, and the json annotation files in the "annots" directory.
+3. Then you need to train a model (VGG16/ResNet50/ConvNeXt-t).
+4. Finally you can run an XAI method (Grad-CAM/LRP/CRAFT/CRP) on a trained model.
+```bash
+python lrp.py
+```
    
 *(To be completed — usage examples and run commands will be added later.)*
 
