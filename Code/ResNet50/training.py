@@ -1,7 +1,7 @@
 # TRAINING SCRIPT FOR RESNET50 MODEL
 
 #################################################################################################
-# SETUP START
+# SETUP START - Change parameters if necessary
 #################################################################################################
 
 # Relative paths to training and test splits (images and annotation files)
