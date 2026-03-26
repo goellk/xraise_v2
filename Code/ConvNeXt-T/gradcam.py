@@ -1,3 +1,29 @@
+# GRAD-CAM FOR CONVNEXT-T MODEL
+
+#################################################################################################
+# SETUP START - Change parameters if necessary
+#################################################################################################
+
+# Relative path to model checkpoint
+MODEL_PATH = "convnext_models_512_v3/convnext_training_512_epoch_1.pth"
+
+# Relative path to dataset that should be evaluated with LRP
+IMGS = "/Data/CUSTOM_DATASET_v3_unified/test/imgs"
+
+#################################################################################################
+# SETUP END
+#################################################################################################
+
+
+
+
+
+
+
+#################################################################################################
+# DO NOT CHANGE CODE BELOW
+#################################################################################################
+
 import os
 import torch
 import numpy as np
@@ -71,7 +97,7 @@ def apply_gradcam(model, target_layer, image_path, output_dir):
 
 # Paths and device
 workspace_dir = str(os.path.dirname(os.path.dirname(os.getcwd())))
-image_dir = workspace_dir + "/Data/CUSTOM_DATASET_v3_unified/test/imgs"
+image_dir = workspace_dir + IMGS
 
 
 output_dir = "gradcam_results"
@@ -80,7 +106,7 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # Load model
 model = ConvNextTiny_BinaryClassifier(pretrained=False)
-model.load_state_dict(torch.load("convnext_models_512_v3/convnext_training_512_epoch_1.pth", map_location=device))
+model.load_state_dict(torch.load(MODEL_PATH, map_location=device))
 model.to(device)
 
 # Select target layer for Grad-CAM (adjust based on model architecture)

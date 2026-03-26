@@ -1,3 +1,29 @@
+# LRP FOR CONVNEXT-T MODEL
+
+#################################################################################################
+# SETUP START - Change parameters if necessary
+#################################################################################################
+
+# Relative path to model checkpoint
+MODEL_PATH = "convnext_models_512_v3/convnext_training_512_epoch_1.pth"
+
+# Relative path to dataset that should be evaluated with LRP
+IMGS = "/Data/CUSTOM_DATASET_v3_unified/test/imgs"
+
+#################################################################################################
+# SETUP END
+#################################################################################################
+
+
+
+
+
+
+
+#################################################################################################
+# DO NOT CHANGE CODE BELOW
+#################################################################################################
+
 import os
 import matplotlib
 import torch
@@ -26,10 +52,9 @@ matplotlib.use('Agg')
 
 # Configuration
 workspace_dir = str(os.path.dirname(os.path.dirname(os.getcwd())))
-TEST_IMAGE_DIR = workspace_dir + "/Data/CUSTOM_DATASET_v3_unified/test/imgs"
+TEST_IMAGE_DIR = workspace_dir + IMGS
 
 
-MODEL_PATH = "convnext_models_512_v3/convnext_training_512_epoch_1.pth"
 OUTPUT_DIR = "lrp_results"
 BATCH_SIZE = 1
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
