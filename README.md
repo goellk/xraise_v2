@@ -87,6 +87,36 @@ pip install -r requirements.txt
 ## 🚀 Usage Instructions
 
 1. First of all, you need to place the dataset into the dataset folder. The dataset folder should consist of two directories, "test" and "training". In these directories, there should be two subdirectories "imgs" and "annots". The images should be placed in the "imgs" directory, and the json annotation files in the "annots" directory.
+```json
+{
+    "metadata": {
+        "dataset_name": "OSDaR23",
+        "original_image_name": "091_1631640361.200000048.png",
+        "scene_name": "3_fire_site_3.4",
+        "rgb_directory": "rgb_right"
+    },
+    "annotations": [
+        {
+            "bbox": {
+                "x_min": 9.99581603245975,
+                "y_min": 947.8472957618069,
+                "x_max": 42.38581603245975,
+                "y_max": 1052.847295761807
+            },
+            "class": "person"
+        },
+        {
+            "bbox": {
+                "x_min": 13.943741009983375,
+                "y_min": 942.6896432224502,
+                "x_max": 45.22374100998338,
+                "y_max": 1058.0096432224502
+            },
+            "class": "person"
+        }
+    ]
+}
+```
 3. Then you need to train a model (VGG16/ResNet50/ConvNeXt-t).
 4. Finally you can run an XAI method (Grad-CAM/LRP/CRAFT/CRP) on a trained model.
 ```bash
