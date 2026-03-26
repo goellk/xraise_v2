@@ -86,6 +86,10 @@ pip install -r requirements.txt
 
 ## 🚀 Usage Instructions
 
+1. First of all, you need to place the dataset into the dataset folder.
+2. Then you need to train a model (VGG16/ResNet50/ConvNeXt-t).
+3. Finally you can run an XAI method (Grad-CAM/LRP/CRAFT/CRP) on a trained model.
+   
 *(To be completed — usage examples and run commands will be added later.)*
 
 ### Currently working XAI/model-combinations:
