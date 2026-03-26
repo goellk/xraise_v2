@@ -1,3 +1,34 @@
+# CRP FOR VGG16 MODEL
+
+#################################################################################################
+# SETUP START - Change parameters if necessary
+#################################################################################################
+
+# Relative path to model checkpoint
+MODEL_PATH = "vgg_models_512_v3/vgg_training_512_epoch_1.pth"
+
+# Relative path to dataset that should be evaluated with CRAFT
+EVAL_IMGS = "/Data/CUSTOM_DATASET_v3_unified/test/imgs/"
+
+# Relative path to dataset from which concept images should be taken from
+CONCEPT_IMGS = "/Data/CUSTOM_DATASET_v3_unified/concept/imgs/"
+CONCEPT_ANNOT = "/Data/CUSTOM_DATASET_v3_unified/concept/annots/"
+
+
+#################################################################################################
+# SETUP END
+#################################################################################################
+
+
+
+
+
+
+
+#################################################################################################
+# DO NOT CHANGE CODE BELOW
+#################################################################################################
+
 import torch
 from torchvision import transforms
 from helper import *
@@ -24,9 +55,9 @@ warnings.filterwarnings("ignore")  # Ignore warnings
 
 # Input directories
 workspace_dir = str(os.path.dirname(os.path.dirname(os.getcwd())))
-heatmap_img_dir = workspace_dir + "/Data/CUSTOM_DATASET_v3_unified/test/imgs/"
-concept_img_dir = workspace_dir + "/Data/CUSTOM_DATASET_v3_unified/training/imgs/"
-concept_annot_dir = workspace_dir + "/Data/CUSTOM_DATASET_v3_unified/training/annots/"
+heatmap_img_dir = workspace_dir + EVAL_IMGS
+concept_img_dir = workspace_dir + CONCEPT_IMGS
+concept_annot_dir = workspace_dir + CONCEPT_ANNOT
 
 # Output directory
 output_dir = "crp_results"
@@ -35,8 +66,7 @@ os.makedirs(output_dir, exist_ok=True)
 # Load model
 device = "cuda" if torch.cuda.is_available() else "cpu"
 model = VGG16_BinaryClassifier(pretrained=False)
-model.load_state_dict(torch.load("vgg_models_512_v3/vgg_training_512_epoch_1.pth", map_location=device))
-#model.load_state_dict(torch.load("vgg_models_512_train/vgg_training_512_epoch_5.pth", map_location=device))
+model.load_state_dict(torch.load(MODEL_PATH, map_location=device))
 model.to(device)
 model.eval()
 

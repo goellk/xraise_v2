@@ -1,3 +1,35 @@
+# CRAFT FOR RESNET50 MODEL
+
+#################################################################################################
+# SETUP START - Change parameters if necessary
+#################################################################################################
+
+# Relative path to model checkpoint
+MODEL_PATH = "resnet50_models_512_v3/resnet50_training_512_epoch_1.pth"
+
+# Relative path to dataset that should be evaluated with CRAFT
+EVAL_IMGS = "/Data/CUSTOM_DATASET_v3_unified/test/imgs/"
+EVAL_ANNOTS = "/Data/CUSTOM_DATASET_v3_unified/test/annots/"
+
+# Relative path to dataset from which concept images should be taken from
+CONCEPT_IMGS = "/Data/CUSTOM_DATASET_v3_unified/concept/imgs/"
+CONCEPT_ANNOT = "/Data/CUSTOM_DATASET_v3_unified/concept/annots/"
+
+
+#################################################################################################
+# SETUP END
+#################################################################################################
+
+
+
+
+
+
+
+#################################################################################################
+# DO NOT CHANGE CODE BELOW
+#################################################################################################
+
 import numpy as np
 import torch
 import cv2
@@ -19,17 +51,14 @@ warnings.filterwarnings("ignore")
 
 # Set variables
 workspace_dir = str(os.path.dirname(os.path.dirname(os.getcwd())))
-MODEL_PATH = "resnet50_models_512_v3/resnet50_training_512_epoch_1.pth"
-#IMAGE_DIR = workspace_dir + "/03_Original images_48/imgs/"
-#ANNOT_DIR = workspace_dir + "/03_Original images_48/annots/"
 
 # Images for inference with CRAFT
-IMAGE_DIR = workspace_dir + "/Data/CUSTOM_DATASET_v3_unified/test/imgs"
-ANNOT_DIR = workspace_dir + "/Data/CUSTOM_DATASET_v3_unified/test/annots"
+IMAGE_DIR = workspace_dir + EVAL_IMGS
+ANNOT_DIR = workspace_dir + EVAL_ANNOTS
 
 # Concept images
-CONCEPT_IMAGE_DIR = workspace_dir + "/Data/CUSTOM_DATASET_v3_unified/training/imgs"
-CONCEPT_ANNOT_DIR = workspace_dir + "/Data/CUSTOM_DATASET_v3_unified/training/annots"
+CONCEPT_IMAGE_DIR = workspace_dir + CONCEPT_IMGS
+CONCEPT_ANNOT_DIR = workspace_dir + CONCEPT_ANNOT
 
 OUTPUT_PATH = "craft_results/"
 BATCH_SIZE = 1

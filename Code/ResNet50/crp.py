@@ -1,3 +1,35 @@
+# CRP FOR RESNET50 MODEL
+
+#################################################################################################
+# SETUP START - Change parameters if necessary
+#################################################################################################
+
+# Relative path to model checkpoint
+MODEL_PATH = "resnet50_models_512_v3/resnet50_training_512_epoch_1.pth"
+
+# Relative path to dataset that should be evaluated with CRAFT
+EVAL_IMGS = "/Data/CUSTOM_DATASET_v3_unified/test/imgs/"
+
+# Relative path to dataset from which concept images should be taken from
+CONCEPT_IMGS = "/Data/CUSTOM_DATASET_v3_unified/concept/imgs/"
+CONCEPT_ANNOT = "/Data/CUSTOM_DATASET_v3_unified/concept/annots/"
+
+
+#################################################################################################
+# SETUP END
+#################################################################################################
+
+
+
+
+
+
+
+#################################################################################################
+# DO NOT CHANGE CODE BELOW
+#################################################################################################
+
+
 import torch
 from torchvision import transforms
 from helper import *
@@ -18,33 +50,29 @@ import cv2
 from PIL import ImageDraw, ImageFont
 from tqdm import tqdm
 
-matplotlib.use('Agg')  # Use non-interactive backend to prevent pop-ups
-warnings.filterwarnings("ignore")  # Ignore warnings
+matplotlib.use('Agg') 
+warnings.filterwarnings("ignore") 
 
 # Input directories
 workspace_dir = str(os.path.dirname(os.path.dirname(os.getcwd())))
-heatmap_img_dir = workspace_dir + "/Data/CUSTOM_DATASET_v3_unified/test/imgs"
-concept_img_dir = workspace_dir + "/Data/CUSTOM_DATASET_v3_unified/training/imgs"
-concept_annot_dir = workspace_dir + "/Data/CUSTOM_DATASET_v3_unified/training/annots"
+heatmap_img_dir = workspace_dir + EVAL_IMGS
+concept_img_dir = workspace_dir + CONCEPT_IMGS
+concept_annot_dir = workspace_dir + CONCEPT_ANNOT
 
 # Output directory
 output_dir = "crp_results"
 os.makedirs(output_dir, exist_ok=True)
 
-# ==================== ONLY THESE LINES CHANGED ====================
 # Load ResNet50 Binary Classifier instead of VGG16
 device = "cuda" if torch.cuda.is_available() else "cpu"
 model = ResNet50_BinaryClassifier(pretrained=False)
-model.load_state_dict(torch.load("resnet50_models_512_v3/resnet50_training_512_epoch_1.pth", map_location=device))
-# Replace with your actual ResNet50 checkpoint path, e.g.:
-# model.load_state_dict(torch.load("resnet50_binary_epoch_5.pth", map_location=device))
+model.load_state_dict(torch.load(MODEL_PATH, map_location=device))
 
 model.to(device)
 model.eval()
 
 # CRP layer for ResNet50 (last convolutional layer before classifier)
 crp_layer = "resnet.layer4.2.conv3"
-# ==================================================================
 
 # Define transform (ResNet50 standard preprocessing)
 transform = transforms.Compose([
@@ -52,12 +80,12 @@ transform = transforms.Compose([
     transforms.ToTensor(),
     transforms.Normalize(mean=[0.4045, 0.4143, 0.4043], std=[0.2852, 0.2935, 0.2993])
 ])
+
 # Prepare CRP
 cc = ChannelConcept()
 composite = EpsilonPlusFlat([SequentialMergeBatchNorm()])
 attribution = CondAttribution(model, no_param_grad=True)
 layer_names = get_layer_names(model, [torch.nn.Conv2d, torch.nn.Linear])
-
 
 # Function for running inference on given image and save the classification result
 def run_inference(image_path, output_dir):
@@ -90,7 +118,6 @@ def run_inference(image_path, output_dir):
     annotated_pil.save(output_path)
 
 
-# ====================== EVERYTHING BELOW IS IDENTICAL TO ORIGINAL crp.py ======================
 print("Running inference...")
 for img_file in tqdm(os.listdir(heatmap_img_dir)):
     img_path = os.path.join(heatmap_img_dir, img_file)
