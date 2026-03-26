@@ -32,11 +32,11 @@ transform = transforms.Compose([
 
 # Paths to dataset directories
 workspace_dir = str(os.path.dirname(os.path.dirname(os.getcwd())))
-train_img_dir = workspace_dir + "/Data/CUSTOM_DATASET_v2_unified/training/imgs"
-train_annot_dir = workspace_dir + "/Data/CUSTOM_DATASET_v2_unified/training/annots"
+train_img_dir = workspace_dir + "/Data/CUSTOM_DATASET_v3_unified/training/imgs"
+train_annot_dir = workspace_dir + "/Data/CUSTOM_DATASET_v3_unified/training/annots"
 
-val_img_dir = workspace_dir + "/Data/CUSTOM_DATASET_v2_unified/test/imgs"
-val_annot_dir = workspace_dir + "/Data/CUSTOM_DATASET_v2_unified/test/annots"
+val_img_dir = workspace_dir + "/Data/CUSTOM_DATASET_v3_unified/test/imgs"
+val_annot_dir = workspace_dir + "/Data/CUSTOM_DATASET_v3_unified/test/annots"
 
 # Define hyperparameters
 BATCH_SIZE = 4 #4
@@ -64,10 +64,10 @@ criterion = nn.BCELoss()
 optimizer = optim.Adam(model.parameters(), lr=LEARNING_RATE)
 
 # Create a directory to save models
-os.makedirs("convnext_models_512", exist_ok=True)
+os.makedirs("convnext_models_512_v3", exist_ok=True)
 
 # CSV logging
-log_file = "log_convnext_512.csv"
+log_file = "log_convnext_512_v3.csv"
 with open(log_file, mode="w", newline="") as file:
     writer = csv.writer(file)
     writer.writerow(
@@ -130,7 +130,7 @@ for epoch in range(EPOCHS):
              val_f1])
 
     # Save the model after each epoch
-    model_path = f"convnext_models_512/convnext_training_512_epoch_{epoch + 1}.pth"
+    model_path = f"convnext_models_512_v3/convnext_training_512_epoch_{epoch + 1}.pth"
     torch.save(model.state_dict(), model_path)
     print(f"Model saved to {model_path}")
 

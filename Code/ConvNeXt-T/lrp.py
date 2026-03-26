@@ -26,10 +26,10 @@ matplotlib.use('Agg')
 
 # Configuration
 workspace_dir = str(os.path.dirname(os.path.dirname(os.getcwd())))
-TEST_IMAGE_DIR = workspace_dir + "/03_Original images_48/imgs/"
+TEST_IMAGE_DIR = workspace_dir + "/Data/CUSTOM_DATASET_v3_unified/test/imgs"
 
 
-MODEL_PATH = "convnext_models_512/convnext_training_512_epoch_3.pth"
+MODEL_PATH = "convnext_models_512_v3/convnext_training_512_epoch_1.pth"
 OUTPUT_DIR = "lrp_results"
 BATCH_SIZE = 1
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")

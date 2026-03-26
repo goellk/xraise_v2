@@ -19,17 +19,17 @@ warnings.filterwarnings("ignore")
 
 # Set variables
 workspace_dir = str(os.path.dirname(os.path.dirname(os.getcwd())))
-MODEL_PATH = "resnet50_models_512/resnet50_training_512_epoch_3.pth"
+MODEL_PATH = "resnet50_models_512_v3/resnet50_training_512_epoch_1.pth"
 #IMAGE_DIR = workspace_dir + "/03_Original images_48/imgs/"
 #ANNOT_DIR = workspace_dir + "/03_Original images_48/annots/"
 
 # Images for inference with CRAFT
-IMAGE_DIR = workspace_dir + "/08_Data/CRAFT_MAPS_DATASET/imgs/"
-ANNOT_DIR = workspace_dir + "/08_Data/CRAFT_MAPS_DATASET/annots/"
+IMAGE_DIR = workspace_dir + "/Data/CUSTOM_DATASET_v3_unified/test/imgs"
+ANNOT_DIR = workspace_dir + "/Data/CUSTOM_DATASET_v3_unified/test/annots"
 
 # Concept images
-CONCEPT_IMAGE_DIR = workspace_dir + "/08_Data/CRAFT_CONCEPT_DATASET+INRIA/imgs/"
-CONCEPT_ANNOT_DIR = workspace_dir + "/08_Data/CRAFT_CONCEPT_DATASET+INRIA/annots/"
+CONCEPT_IMAGE_DIR = workspace_dir + "/Data/CUSTOM_DATASET_v3_unified/training/imgs"
+CONCEPT_ANNOT_DIR = workspace_dir + "/Data/CUSTOM_DATASET_v3_unified/training/annots"
 
 OUTPUT_PATH = "craft_results/"
 BATCH_SIZE = 1

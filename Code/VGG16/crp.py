@@ -24,9 +24,9 @@ warnings.filterwarnings("ignore")  # Ignore warnings
 
 # Input directories
 workspace_dir = str(os.path.dirname(os.path.dirname(os.getcwd())))
-heatmap_img_dir = workspace_dir + "/03_Original images_48/imgs/"
-concept_img_dir = workspace_dir + "/08_Data/CRP_CONCEPT_DATASET/imgs/"
-concept_annot_dir = workspace_dir + "/08_Data/CRP_CONCEPT_DATASET/annots/"
+heatmap_img_dir = workspace_dir + "/Data/CUSTOM_DATASET_v3_unified/test/imgs/"
+concept_img_dir = workspace_dir + "/Data/CUSTOM_DATASET_v3_unified/training/imgs/"
+concept_annot_dir = workspace_dir + "/Data/CUSTOM_DATASET_v3_unified/training/annots/"
 
 # Output directory
 output_dir = "crp_results"
@@ -35,7 +35,7 @@ os.makedirs(output_dir, exist_ok=True)
 # Load model
 device = "cuda" if torch.cuda.is_available() else "cpu"
 model = VGG16_BinaryClassifier(pretrained=False)
-model.load_state_dict(torch.load("finetuned_models_512_inria_7/vgg16_512_finetuned_epoch_3.pth", map_location=device))
+model.load_state_dict(torch.load("vgg_models_512_v3/vgg_training_512_epoch_1.pth", map_location=device))
 #model.load_state_dict(torch.load("vgg_models_512_train/vgg_training_512_epoch_5.pth", map_location=device))
 model.to(device)
 model.eval()

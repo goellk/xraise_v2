@@ -32,11 +32,11 @@ transform = transforms.Compose([
 
 # Paths to dataset directories
 workspace_dir = str(os.path.dirname(os.path.dirname(os.getcwd())))
-train_img_dir = workspace_dir + "/Data/CUSTOM_DATASET_v2_unified/training/imgs"
-train_annot_dir = workspace_dir + "/Data/CUSTOM_DATASET_v2_unified/training/annots"
+train_img_dir = workspace_dir + "/Data/CUSTOM_DATASET_v3_unified/training/imgs"
+train_annot_dir = workspace_dir + "/Data/CUSTOM_DATASET_v3_unified/training/annots"
 
-val_img_dir = workspace_dir + "/Data/CUSTOM_DATASET_v2_unified/test/imgs"
-val_annot_dir = workspace_dir + "/Data/CUSTOM_DATASET_v2_unified/test/annots"
+val_img_dir = workspace_dir + "/Data/CUSTOM_DATASET_v3_unified/test/imgs"
+val_annot_dir = workspace_dir + "/Data/CUSTOM_DATASET_v3_unified/test/annots"
 
 # Define hyperparameters
 BATCH_SIZE = 4 

@@ -71,7 +71,7 @@ def apply_gradcam(model, target_layer, image_path, output_dir):
 
 # Paths and device
 workspace_dir = str(os.path.dirname(os.path.dirname(os.getcwd())))
-image_dir = workspace_dir + "/03_Original images_48/imgs/"
+image_dir = workspace_dir + "/Data/CUSTOM_DATASET_v3_unified/test/imgs"
 
 
 output_dir = "gradcam_results"
@@ -80,7 +80,7 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # Load model
 model = ConvNextTiny_BinaryClassifier(pretrained=False)
-model.load_state_dict(torch.load("convnext_models_512/convnext_training_512_epoch_3.pth", map_location=device))
+model.load_state_dict(torch.load("convnext_models_512_v3/convnext_training_512_epoch_1.pth", map_location=device))
 model.to(device)
 
 # Select target layer for Grad-CAM (adjust based on model architecture)

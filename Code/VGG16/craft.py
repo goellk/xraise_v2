@@ -19,13 +19,13 @@ warnings.filterwarnings("ignore")
 
 # Set variables
 workspace_dir = str(os.path.dirname(os.path.dirname(os.getcwd())))
-MODEL_PATH = "vgg_models_512_v3/vgg_training_512_epoch_5.pth"
+MODEL_PATH = "vgg_models_512_v3/vgg_training_512_epoch_1.pth"
 
-IMAGE_DIR = workspace_dir + "/08_Data/CRAFT_MAPS_DATASET/imgs/"
-ANNOT_DIR = workspace_dir + "/08_Data/CRAFT_MAPS_DATASET/annots/"
+IMAGE_DIR = workspace_dir + "/Data/CUSTOM_DATASET_v3_unified/test/imgs/"
+ANNOT_DIR = workspace_dir + "/Data/CUSTOM_DATASET_v3_unified/test/annots/"
 
-CONCEPT_IMAGE_DIR = workspace_dir + "/08_Data/CRAFT_CONCEPT_DATASET+INRIA/imgs/"
-CONCEPT_ANNOT_DIR = workspace_dir + "/08_Data/CRAFT_CONCEPT_DATASET+INRIA/annots/"
+CONCEPT_IMAGE_DIR = workspace_dir + "/Data/CUSTOM_DATASET_v3_unified/training/imgs/"
+CONCEPT_ANNOT_DIR = workspace_dir + "/Data/CUSTOM_DATASET_v3_unified/training/annots/"
 
 OUTPUT_PATH = "craft_results/"
 BATCH_SIZE = 1

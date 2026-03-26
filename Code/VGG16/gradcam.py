@@ -71,7 +71,7 @@ def apply_gradcam(model, target_layer, image_path, output_dir):
 
 # Paths and device
 workspace_dir = str(os.path.dirname(os.path.dirname(os.getcwd())))
-image_dir = workspace_dir + "/03_Original images_48/imgs/"
+image_dir = workspace_dir + "/Data/CUSTOM_DATASET_v3_unified/test/imgs/"
 
 
 output_dir = "gradcam_results"
@@ -81,7 +81,7 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 # Load model
 model = VGG16_BinaryClassifier(pretrained=False)
 #model.load_state_dict(torch.load("vgg_models_512_v3/vgg_training_512_epoch_3.pth", map_location=device))
-model.load_state_dict(torch.load("finetuned_models_512_inria_7/vgg16_512_finetuned_epoch_3.pth", map_location=device))
+model.load_state_dict(torch.load("vgg_models_512_v3/vgg_training_512_epoch_1.pth", map_location=device))
 #model.load_state_dict(torch.load("vgg_inria_pretrained_models_512/vgg_inria_pretrained_512_epoch_7.pth", map_location=device))
 
 model.to(device)
