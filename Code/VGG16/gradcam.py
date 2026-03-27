@@ -106,10 +106,7 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # Load model
 model = VGG16_BinaryClassifier(pretrained=False)
-#model.load_state_dict(torch.load("vgg_models_512_v3/vgg_training_512_epoch_3.pth", map_location=device))
 model.load_state_dict(torch.load(MODEL_PATH, map_location=device))
-#model.load_state_dict(torch.load("vgg_inria_pretrained_models_512/vgg_inria_pretrained_512_epoch_7.pth", map_location=device))
-
 model.to(device)
 
 # Select target layer for Grad-CAM (adjust based on model architecture)
