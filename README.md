@@ -86,7 +86,7 @@ pip install -r requirements.txt
 
 ## 🚀 Usage Instructions
 
-1. First of all, you need to place the dataset into the dataset folder. The dataset folder should consist of two directories, "test" and "training". In these directories, there should be two subdirectories "imgs" and "annots". The images should be placed in the "imgs" directory, and the json annotation files in the "annots" directory. Images should be in .jpg or .png format, annotations in JSON format. An annotation file should have the same name as the corresponding image file (apart from the file format example_name.png/jpg -> example_name.json) and should look like this example:
+1. First of all, you need to place the dataset into the Data/ folder. The dataset folder should consist of two directories, "test" and "training". In these directories, there should be two subdirectories "imgs" and "annots". The images should be placed in the "imgs" directory, and the json annotation files in the "annots" directory. Images should be in .jpg or .png format, annotations in JSON format. An annotation file should have the same name as the corresponding image file (apart from the file format example_name.png/jpg -> example_name.json) and should look like this example:
 ```json
 {
     "metadata": {
@@ -119,7 +119,7 @@ pip install -r requirements.txt
 ```
 If the image contains a person, the bounding box data should be provided as shown in the example above. If no person is in the image, then leave the "annotations" section empty.
 
-3. Then you need to train a model (VGG16/ResNet50/ConvNeXt-t).
+2. Then you need to train a model (VGG16/ResNet50/ConvNeXt-t). Open the training.py script inside the corresponding model directory and change the dataset paths and hyperparameters in the header:
 ```python
 # TRAINING SCRIPT FOR CONVNEXT-T MODEL
 
@@ -141,6 +141,10 @@ EPOCHS = 50
 #################################################################################################
 # SETUP END
 #################################################################################################
+```
+Now you can start training by running
+```bash
+python training.py
 ```
 5. Finally you can run an XAI method (Grad-CAM/LRP/CRAFT/CRP) on a trained model.
 ```bash
