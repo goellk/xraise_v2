@@ -146,7 +146,35 @@ Now you can start training by running
 ```bash
 python training.py
 ```
-5. Finally you can run an XAI method (Grad-CAM/LRP/CRAFT/CRP) on a trained model.
+5. Finally you can run an XAI method (Grad-CAM/LRP/CRAFT/CRP) on a trained model. Therefore, you also need to adjust the paths first. Open the gradcam|lrp|craft|crp.py file and change the parameters in the header, e.g. from craft.py:
+
+```python
+# CRAFT FOR VGG16 MODEL
+
+#################################################################################################
+# SETUP START - Change parameters if necessary
+#################################################################################################
+
+# Relative path to model checkpoint
+MODEL_PATH = "vgg_models_512_v3/vgg_training_512_epoch_1.pth"
+
+# Relative path to dataset that should be evaluated with CRAFT
+EVAL_IMGS = "/Data/CUSTOM_DATASET_v3_unified/test/imgs/"
+EVAL_ANNOTS = "/Data/CUSTOM_DATASET_v3_unified/test/annots/"
+
+# Relative path to dataset from which concept images should be taken from
+CONCEPT_IMGS = "/Data/CUSTOM_DATASET_v3_unified/concept/imgs/"
+CONCEPT_ANNOT = "/Data/CUSTOM_DATASET_v3_unified/concept/annots/"
+
+
+#################################################################################################
+# SETUP END
+#################################################################################################
+
+
+```
+
+Then run the XAI method:
 ```bash
 python lrp.py
 ```
