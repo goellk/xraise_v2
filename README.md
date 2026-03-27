@@ -179,7 +179,7 @@ Then run the XAI method:
 python lrp.py
 ```
    
-*(To be completed — usage examples and run commands will be added later.)*
+*Please note that it is strongly recommended to a rather small concept image datapool (especially for CRAFT) because of the memory requirements - sticking to a maximum of ~300 images should work for 32GB of RAM.*
 
 ### Currently working XAI/model-combinations:
 | Model       | Grad-CAM | LRP    | CRAFT | CRP |
