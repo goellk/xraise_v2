@@ -166,15 +166,15 @@ EVAL_ANNOTS = "/Data/CUSTOM_DATASET_v3_unified/test/annots/"
 CONCEPT_IMGS = "/Data/CUSTOM_DATASET_v3_unified/concept/imgs/"
 CONCEPT_ANNOT = "/Data/CUSTOM_DATASET_v3_unified/concept/annots/"
 
+# Flag to control whether to show the prediction text on the CRAFT attribution maps
+SHOW_PREDICTION = True
 
 #################################################################################################
 # SETUP END
 #################################################################################################
-
-
 ```
-
-Then run the XAI method:
+If you set the ```SHOW_PREDICTION``` flag to ```False```, only the explanation (i.e. heatmap) will be shown, without the classification output.
+Run the XAI method by executing:
 ```bash
 python lrp.py
 ```
