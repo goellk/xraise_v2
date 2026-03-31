@@ -10,6 +10,9 @@ MODEL_PATH = "vgg_models_512_v3/vgg_training_512_epoch_1.pth"
 # Relative path to dataset that should be evaluated with LRP
 IMGS = "/Data/CUSTOM_DATASET_v3_unified/test/imgs"
 
+# Flag to control whether to show the prediction text on the LRP visualization
+SHOW_PREDICTION = True
+
 #################################################################################################
 # SETUP END
 #################################################################################################
@@ -151,17 +154,18 @@ def lrp_analysis(image_paths, model, output_dir):
                 # signs="all"  # Show both positive and negative values
             )
 
-            # Add prediction text to the plot
-            if predicted_class == "person":
-                rect_color = (0, 1, 0)  # Green rectangle
-                text_color = (0, 0, 0)  # Black text
-            else:
-                rect_color = (1, 0, 0)  # Red rectangle
-                text_color = (0, 0, 0)  # Black text
+            if SHOW_PREDICTION:
+                # Add prediction text to the plot
+                if predicted_class == "person":
+                    rect_color = (0, 1, 0)  # Green rectangle
+                    text_color = (0, 0, 0)  # Black text
+                else:
+                    rect_color = (1, 0, 0)  # Red rectangle
+                    text_color = (0, 0, 0)  # Black text
 
-            # Add text annotation
-            text = f"Predicted: {predicted_class} | p={probability:.2f}%"
-            ax[0].text(10, 30, text, fontsize=12, color=text_color, bbox=dict(facecolor=rect_color, alpha=0.8))
+                # Add text annotation
+                text = f"Predicted: {predicted_class} | p={probability:.2f}%"
+                ax[0].text(10, 30, text, fontsize=12, color=text_color, bbox=dict(facecolor=rect_color, alpha=0.8))
 
             # Save results
             filename = os.path.splitext(os.path.basename(img_path))[0]
