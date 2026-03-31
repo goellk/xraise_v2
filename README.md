@@ -146,6 +146,7 @@ Now you can start training by running
 ```bash
 python training.py
 ```
+After each epoch, the training script will automatically save the model checkpoint (so you can use it later for XAI evaluation). Additionally, the training and valdiation losses and accuracies are logged in a .csv file.
 5. Finally you can run an XAI method (Grad-CAM/LRP/CRAFT/CRP) on a trained model. Therefore, you also need to adjust the paths first. Open the gradcam|lrp|craft|crp.py file and change the parameters in the header, e.g. from craft.py:
 
 ```python
