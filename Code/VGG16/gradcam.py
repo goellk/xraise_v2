@@ -7,8 +7,11 @@
 # Relative path to model checkpoint
 MODEL_PATH = "vgg_models_512_v3/vgg_training_512_epoch_1.pth"
 
-# Relative path to dataset that should be evaluated with LRP
+# Relative path to dataset that should be evaluated with Grad-CAM
 IMGS = "/Data/CUSTOM_DATASET_v3_unified/test/imgs"
+
+# Flag to control whether to show the prediction text on the Grad-CAM image
+SHOW_PREDICTION = True
 
 #################################################################################################
 # SETUP END
@@ -71,22 +74,24 @@ def apply_gradcam(model, target_layer, image_path, output_dir):
     # Blend heatmap and original image
     blended = cv2.addWeighted(img_cv, 0.5, heatmap, 0.5, 0)
 
-    if predicted_class == "person":
-        rect_color = (0, 255, 0)  # Green rectangle
-        text_color = (0, 0, 0)  # Black text
-    else:
-        rect_color = (255, 0, 0)  # Red rectangle
-        text_color = (0,0,0)  # Black text
-
-    # Convert back to PIL for annotation
+    # Convert back to PIL
     blended_pil = Image.fromarray(cv2.cvtColor(blended, cv2.COLOR_BGR2RGB))
-    draw = ImageDraw.Draw(blended_pil)
-    font = ImageFont.load_default(size=30)
-    text = f"Predicted: {predicted_class} | p={probability:.2f}%"
-    text_size = draw.textbbox((0, 0), text, font=font)
-    text_width, text_height = text_size[2] - text_size[0], text_size[3] - text_size[1]
-    draw.rectangle([(10, 10), (10 + text_width + 10, 10 + text_height + 10)], fill=rect_color)
-    draw.text((15, 15), text, fill=text_color, font=font)
+
+    if SHOW_PREDICTION:
+        if predicted_class == "person":
+            rect_color = (0, 255, 0)  # Green rectangle
+            text_color = (0, 0, 0)    # Black text
+        else:
+            rect_color = (255, 0, 0)  # Red rectangle
+            text_color = (0, 0, 0)    # Black text
+
+        draw = ImageDraw.Draw(blended_pil)
+        font = ImageFont.load_default(size=30)
+        text = f"Predicted: {predicted_class} | p={probability:.2f}%"
+        text_size = draw.textbbox((0, 0), text, font=font)
+        text_width, text_height = text_size[2] - text_size[0], text_size[3] - text_size[1]
+        draw.rectangle([(10, 10), (10 + text_width + 10, 10 + text_height + 10)], fill=rect_color)
+        draw.text((15, 15), text, fill=text_color, font=font)
 
     # Save result
     filename, ext = os.path.splitext(os.path.basename(image_path))
