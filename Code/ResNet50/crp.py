@@ -7,13 +7,15 @@
 # Relative path to model checkpoint
 MODEL_PATH = "resnet50_models_512_v3/resnet50_training_512_epoch_1.pth"
 
-# Relative path to dataset that should be evaluated with CRAFT
+# Relative path to dataset that should be evaluated with CRP
 EVAL_IMGS = "/Data/CUSTOM_DATASET_v3_unified/test/imgs/"
 
 # Relative path to dataset from which concept images should be taken from
 CONCEPT_IMGS = "/Data/CUSTOM_DATASET_v3_unified/concept/imgs/"
 CONCEPT_ANNOT = "/Data/CUSTOM_DATASET_v3_unified/concept/annots/"
 
+# Flag to control whether to show the prediction text on the CRP results
+SHOW_PREDICTION = True
 
 #################################################################################################
 # SETUP END
@@ -93,25 +95,31 @@ def run_inference(image_path, output_dir):
     image_resized = image.resize((512, 512))  # match model input size
     tensor_img = transform(image_resized).unsqueeze(0).to(device)
 
+    # Get model prediction
     with torch.no_grad():
         output = model(tensor_img).item()
     predicted_class = "person" if output > 0.5 else "no person"
     probability = output * 100
 
+    # Convert PIL image to OpenCV format (keeping 512x512 size)
     img_cv = np.array(image_resized)
     img_cv = cv2.cvtColor(img_cv, cv2.COLOR_RGB2BGR)
 
-    rect_color = (0, 255, 0) if predicted_class == "person" else (255, 0, 0)
-    text_color = (0, 0, 0)
-
+    # Convert back to PIL 
     annotated_pil = Image.fromarray(cv2.cvtColor(img_cv, cv2.COLOR_BGR2RGB))
-    draw = ImageDraw.Draw(annotated_pil)
-    font = ImageFont.load_default(size=30)
-    text = f"Predicted: {predicted_class} | p={probability:.2f}%"
-    text_size = draw.textbbox((0, 0), text, font=font)
-    text_width, text_height = text_size[2] - text_size[0], text_size[3] - text_size[1]
-    draw.rectangle([(10, 10), (10 + text_width + 10, 10 + text_height + 10)], fill=rect_color)
-    draw.text((15, 15), text, fill=text_color, font=font)
+
+    if SHOW_PREDICTION:
+        # Define text box color and text color
+        rect_color = (0, 255, 0) if predicted_class == "person" else (255, 0, 0)
+        text_color = (0, 0, 0)
+
+        draw = ImageDraw.Draw(annotated_pil)
+        font = ImageFont.load_default(size=30)
+        text = f"Predicted: {predicted_class} | p={probability:.2f}%"
+        text_size = draw.textbbox((0, 0), text, font=font)
+        text_width, text_height = text_size[2] - text_size[0], text_size[3] - text_size[1]
+        draw.rectangle([(10, 10), (10 + text_width + 10, 10 + text_height + 10)], fill=rect_color)
+        draw.text((15, 15), text, fill=text_color, font=font)
 
     filename, ext = os.path.splitext(os.path.basename(image_path))
     output_path = os.path.join(output_dir, f"{filename}_inference{ext}")
