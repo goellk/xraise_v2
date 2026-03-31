@@ -15,6 +15,8 @@ EVAL_ANNOTS = "/Data/CUSTOM_DATASET_v3_unified/test/annots/"
 CONCEPT_IMGS = "/Data/CUSTOM_DATASET_v3_unified/concept/imgs/"
 CONCEPT_ANNOT = "/Data/CUSTOM_DATASET_v3_unified/concept/annots/"
 
+# Flag to control whether to show the prediction text on the CRAFT attribution maps
+SHOW_PREDICTION = True
 
 #################################################################################################
 # SETUP END
@@ -256,31 +258,32 @@ def plot_concept_attribution_maps(percentile=90):
             # Overlay the heatmap on the original image
             plt.imshow(heatmap, cmap=cmap, alpha=0.5)  # Adjust alpha for transparency
 
-        # Add prediction text and rectangle
-        if predicted_class == "person":
-            rect_color = (0, 255, 0)  # Green rectangle
-            text_color = (0, 0, 0)  # Black text
-        else:
-            rect_color = (255, 0, 0)  # Red rectangle
-            text_color = (0, 0, 0)  # Black text
-
         # Convert the plot to a PIL image for annotation
         plt.axis('off')
         plt.tight_layout()
         plt.savefig("temp.png",bbox_inches='tight', pad_inches=0)
         plt.close()
 
-        # Open the saved image and add the prediction text
+        # Open the saved image
         blended_pil = Image.open("temp.png")
         blended_pil = blended_pil.resize((512, 512), Image.Resampling.LANCZOS)
 
-        draw = ImageDraw.Draw(blended_pil)
-        font = ImageFont.load_default(size=30)
-        text = f"Predicted: {predicted_class} | p={probability:.2f}%"
-        text_size = draw.textbbox((0, 0), text, font=font)
-        text_width, text_height = text_size[2] - text_size[0], text_size[3] - text_size[1]
-        draw.rectangle([(10, 10), (10 + text_width + 10, 10 + text_height + 10)], fill=rect_color)
-        draw.text((15, 15), text, fill=text_color, font=font)
+        if SHOW_PREDICTION:
+            # Add prediction text and rectangle
+            if predicted_class == "person":
+                rect_color = (0, 255, 0)  # Green rectangle
+                text_color = (0, 0, 0)  # Black text
+            else:
+                rect_color = (255, 0, 0)  # Red rectangle
+                text_color = (0, 0, 0)  # Black text
+
+            draw = ImageDraw.Draw(blended_pil)
+            font = ImageFont.load_default(size=30)
+            text = f"Predicted: {predicted_class} | p={probability:.2f}%"
+            text_size = draw.textbbox((0, 0), text, font=font)
+            text_width, text_height = text_size[2] - text_size[0], text_size[3] - text_size[1]
+            draw.rectangle([(10, 10), (10 + text_width + 10, 10 + text_height + 10)], fill=rect_color)
+            draw.text((15, 15), text, fill=text_color, font=font)
 
         # After adding the text and rectangle, resize the image to 512x512
         # Save the final image with the prediction text
