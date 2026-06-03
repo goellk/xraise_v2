@@ -11,7 +11,8 @@ MODEL_PATH = "convnext_models_512_v3/convnext_training_512_epoch_1.pth"
 IMGS = "/Data/CUSTOM_DATASET_v3_unified/test/imgs"
 
 # Flag to control whether to show the prediction text on the Grad-CAM image
-SHOW_PREDICTION = True
+SHOW_PREDICTION = False
+
 
 #################################################################################################
 # SETUP END

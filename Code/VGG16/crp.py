@@ -15,7 +15,7 @@ CONCEPT_IMGS = "/Data/CUSTOM_DATASET_v3_unified/concept/imgs/"
 CONCEPT_ANNOT = "/Data/CUSTOM_DATASET_v3_unified/concept/annots/"
 
 # Flag to control whether to show the prediction text on the CRP results
-SHOW_PREDICTION = True
+SHOW_PREDICTION = False
 
 #################################################################################################
 # SETUP END
