@@ -5,10 +5,10 @@
 #################################################################################################
 
 # Relative paths to training and test splits (images and annotation files)
-TRAINING_IMG_DIR = "/Data/CUSTOM_DATASET_v3_unified/training/imgs"
-TRAINING_ANNOT_DIR = "/Data/CUSTOM_DATASET_v3_unified/training/annots"
-TEST_IMG_DIR = "/Data/CUSTOM_DATASET_v3_unified/test/imgs"
-TEST_ANNOT_DIR = "/Data/CUSTOM_DATASET_v3_unified/test/annots"
+TRAINING_IMG_DIR = "/Data/CUSTOM_DATASET_v3_unified/cropped_dataset/train/imgs"
+TRAINING_ANNOT_DIR = "/Data/CUSTOM_DATASET_v3_unified/cropped_dataset/train/annots"
+TEST_IMG_DIR = "/Data/CUSTOM_DATASET_v3_unified/cropped_dataset/test/imgs"
+TEST_ANNOT_DIR = "/Data/CUSTOM_DATASET_v3_unified/cropped_dataset/test/annots"
 
 # Hyperparameters
 BATCH_SIZE = 4
@@ -56,7 +56,23 @@ import numpy as np
 #g.manual_seed(42)
 
 # Define transformations
-transform = transforms.Compose([
+train_transform = transforms.Compose([
+    transforms.Resize((512, 512)),
+    transforms.RandomHorizontalFlip(p=0.5),
+    transforms.ColorJitter(
+        brightness=0.2,
+        contrast=0.2,
+        saturation=0.2,
+        hue=0.1
+    ),
+    transforms.RandomApply([transforms.GaussianBlur(kernel_size=3)], p=0.3),
+    transforms.RandomAdjustSharpness(sharpness_factor=2, p=0.3),
+    transforms.ToTensor(),
+    transforms.Normalize(mean=[0.40933493, 0.42142126, 0.41395313], std=[0.2761048, 0.28513926, 0.29439896])
+])
+
+
+val_transform = transforms.Compose([
     transforms.Resize((512, 512)),
     transforms.ToTensor(),
     transforms.Normalize(mean=[0.40933493, 0.42142126, 0.41395313], std=[0.2761048, 0.28513926, 0.29439896])
@@ -71,8 +87,8 @@ val_annot_dir = workspace_dir + TEST_ANNOT_DIR
 
 # Data preparation
 print("Preparing data...")
-train_dataset = MixedRailwayDataset(train_img_dir, train_annot_dir, transform=transform)
-val_dataset = MixedRailwayDataset(val_img_dir, val_annot_dir, transform=transform)
+train_dataset = MixedRailwayDataset(train_img_dir, train_annot_dir, transform=train_transform)
+val_dataset = MixedRailwayDataset(val_img_dir, val_annot_dir, transform=val_transform)
 train_loader = DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True)#, worker_init_fn=seed_worker, generator=g)
 val_loader = DataLoader(val_dataset, batch_size=BATCH_SIZE, shuffle=False)#, worker_init_fn=seed_worker, generator=g)
 
