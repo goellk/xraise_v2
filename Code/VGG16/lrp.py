@@ -8,7 +8,7 @@
 MODEL_PATH = "vgg_models_512_v3/vgg_training_512_epoch_1.pth"
 
 # Relative path to dataset that should be evaluated with LRP
-IMGS = "/Data/CUSTOM_DATASET_v3_unified/test/imgs"
+IMGS = "/Data/CUSTOM_DATASET_v3_unified/test/cropped_dataset/imgs"
 
 # Flag to control whether to show the prediction text on the LRP visualization
 SHOW_PREDICTION = False

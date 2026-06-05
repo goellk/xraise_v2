@@ -8,7 +8,7 @@
 MODEL_PATH = "vgg_models_512_v3/vgg_training_512_epoch_1.pth"
 
 # Relative path to dataset that should be evaluated with CRP
-EVAL_IMGS = "/Data/CUSTOM_DATASET_v3_unified/test/imgs/"
+EVAL_IMGS = "/Data/CUSTOM_DATASET_v3_unified/cropped_dataset/test/imgs/"
 
 # Relative path to dataset from which concept images should be taken from
 CONCEPT_IMGS = "/Data/CUSTOM_DATASET_v3_unified/concept/imgs/"

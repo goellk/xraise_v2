@@ -8,8 +8,8 @@
 MODEL_PATH = "convnext_models_512_v3/convnext_training_512_epoch_1.pth"
 
 # Relative path to dataset that should be evaluated with CRAFT
-EVAL_IMGS = "/Data/CUSTOM_DATASET_v3_unified/test/imgs/"
-EVAL_ANNOTS = "/Data/CUSTOM_DATASET_v3_unified/test/annots/"
+EVAL_IMGS = "/Data/CUSTOM_DATASET_v3_unified/cropped_dataset/test/imgs/"
+EVAL_ANNOTS = "/Data/CUSTOM_DATASET_v3_unified/cropped_dataset/test/annots/"
 
 # Relative path to dataset from which concept images should be taken from
 CONCEPT_IMGS = "/Data/CUSTOM_DATASET_v3_unified/concept/imgs/"

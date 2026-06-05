@@ -8,7 +8,7 @@
 MODEL_PATH = "vgg_models_512_v3/vgg_training_512_epoch_1.pth"
 
 # Relative path to dataset that should be evaluated with Grad-CAM
-IMGS = "/Data/CUSTOM_DATASET_v3_unified/test/imgs"
+IMGS = "/Data/CUSTOM_DATASET_v3_unified/cropped_dataset/test/imgs"
 
 # Flag to control whether to show the prediction text on the Grad-CAM image
 SHOW_PREDICTION = False
